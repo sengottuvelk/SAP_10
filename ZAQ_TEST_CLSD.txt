@@ -5,7 +5,7 @@ class-pool .
 include ZAQ_TEST======================ccdef.
 
 *"* class ZAQ_TEST definition
-*"* public declarations
+*"* public declaratasdfasfions
   include ZAQ_TEST======================cu.
 *"* protected declarations
   include ZAQ_TEST======================co.
