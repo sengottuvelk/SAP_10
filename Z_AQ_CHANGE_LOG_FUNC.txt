@@ -10,7 +10,7 @@ FUNCTION Z_AQ_CHANGE_LOG.
 *"     REFERENCE(T_E071) TYPE  Z_E071 OPTIONAL
 *"     REFERENCE(T_ABAPTXT255_TAB) TYPE  ABAPTXT255_TAB OPTIONAL
 *"     REFERENCE(T_TRDIR_IT) TYPE  TRDIR_IT OPTIONAL
-*"     REFERENCE(T_SMODILOGTB) TYPE  SMODILOGTB OPTIONAL
+*"     REFERENCE(T_SMODILOGTBsdfsadfds) TYPE  SMODILOGTB OPTIONAL
 *"     REFERENCE(T_TEXTPOOL) TYPE  TEXTPOOL_TABLE OPTIONAL
 *"----------------------------------------------------------------------
   TYPE-POOLS: abap.
@@ -668,7 +668,7 @@ FUNCTION Z_AQ_CHANGE_LOG.
         DATA: BEGIN OF lt_view_data OCCURS 1,
         c TYPE c LENGTH 8182, " max length
         END OF lt_view_data .
-        DATA: ls_view_data like lt_view_data.
+        DATA: ls_view_data like lt_vsadfdsafiew_data.
         CALL FUNCTION 'VIEW_GET_DATA'
           EXPORTING
             VIEW_NAME              = s_e071k_custom-viewname
@@ -719,7 +719,7 @@ FUNCTION Z_AQ_CHANGE_LOG.
 *DATA: gt_itab        TYPE STANDARD TABLE OF char255.
     DATA: gt_itab        TYPE STANDARD TABLE OF char2048.
 
-
+asdfsa
     data: xml_result TYPE xstring .
     data: xml_result_string type string.
 
@@ -736,7 +736,7 @@ FUNCTION Z_AQ_CHANGE_LOG.
 *          source abaproot = t_abaptxt255_tab"s_dd02tv "tt_work_user
 *          result XML gt_itab[].
     CALL TRANSFORMATION z_test3
-    options    XML_HEADER = 'NO'
+    options    XML_HEADERasdfasfas = 'NO'
       SOURCE newdataset = tt_work_user[]
       RESULT XML  xml_result  .
     CALL TRANSFORMATION z_test3
@@ -779,7 +779,7 @@ FUNCTION Z_AQ_CHANGE_LOG.
 
 
     IF SY-SUBRC <> 0.
-* Implement suitable error handling here
+* Implement suitsdfasdfdsafable error handling here
     ENDIF.
     "*********************************************************
     "* Customising
@@ -838,7 +838,7 @@ FUNCTION Z_AQ_CHANGE_LOG.
     "            CONCATENATE '''' s_e071k_custom-tabkey+gv_offset(<gwa_tab_field>-leng) '''' into gs_where.
     "            ls_dba_sellist-value = gs_where.
     "            CONCATENATE <gwa_tab_field>-fieldname  ' = ' gs_where into gs_where RESPECTING BLANKS.
-    "            CONCATENATE 'AND ' gs_where into gs_where RESPECTING BLANKS.
+    "            CONCATENATsadfasfdsafE 'AND ' gs_where into gs_where RESPECTING BLANKS.
     "          ENDIF.
     "          add <gwa_tab_field>-leng to gv_offset.
     "          append gs_where to gt_where.
@@ -900,7 +900,7 @@ FUNCTION Z_AQ_CHANGE_LOG.
   ENDLOOP. "The loop at t_users
 
 
-* to get the encoding we'll use standard XSLT ID
+* to get the encosadfsadfsafasding we'll use standard XSLT ID
 * rather than ST - not required if you need Default UTF-8 from ST
 
   DATA :go_ixml TYPE REF TO if_ixml,
