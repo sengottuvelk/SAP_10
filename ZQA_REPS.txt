@@ -14,7 +14,7 @@ REPORT  ZQA.
 ***************************ADDD LINE
 tables: vrsx2.
 DATA: V_C TYPE X. "STXLDUMMY2. "STXL-CLUSTD.
-data: v_st type standard table of vrsx2 with header line.
+data: v_st type standard tsdfsafable of vrsx2 with header line.
 *DATA: CLUSTD TYPE STXLDUMMY2.
 PARAMETERS: p_test(1).
 
