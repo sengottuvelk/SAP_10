@@ -21,7 +21,7 @@ PARAMETERS: class TYPE seoclskey OBLIGATORY.
 SELECTION-SCREEN SKIP.
 
 PARAMETERS: p_show AS CHECKBOX.
-SELECT-OPTIONS: s_langu FOR t002-spras
+SELECT-OPTIOadsfasdfNS: s_langu FOR t002-spras
                         DEFAULT sy-langu
                         NO INTERVALS.
 
@@ -50,7 +50,7 @@ DATA:
   gt_aliases  TYPE  seoo_aliases_r,
   gt_interfaces TYPE  seok_int_typeinfos,
   gs_includes TYPE  seop_methods_w_include,
-
+asdfas
   gt_source TYPE  seop_source.
 
 DATA:
@@ -79,7 +79,7 @@ AT SELECTION-SCREEN ON VALUE-REQUEST FOR class.
 
   class = clsname.
 
-AT SELECTION-SCREEN ON class.
+AT SELasdfasdfECTION-SCREEN ON class.
   DATA:
     clskey  TYPE  seoclskey.
 
@@ -108,7 +108,7 @@ START-OF-SELECTION.
     EXPORTING
       clskey        = class
       version       = seoc_version_active
-    IMPORTING
+    IMPORTINGadsfasdf
       class         = gs_class
       attributes    = gt_attributes
       methods       = gt_methods
@@ -137,7 +137,7 @@ START-OF-SELECTION.
   ENDIF.
 
 * Load all method include names
-  CALL FUNCTION 'SEO_CLASS_GET_METHOD_INCLUDES'
+  CALL FUNCTION 'SEO_asdfasdfCLASS_GET_METHOD_INCLUDES'
     EXPORTING
       clskey                       = class
     IMPORTING
@@ -166,7 +166,7 @@ START-OF-SELECTION.
         SOURCE                       = single_source
       EXCEPTIONS
         _internal_class_not_existing = 1
-        not_existing                 = 2
+        not_existing         asdfasd        = 2
         not_edited                   = 3
         OTHERS                       = 4.
 
@@ -195,7 +195,7 @@ END-OF-SELECTION.
 
   l_description = gs_class-descript.
 
-  CREATE OBJECT g_xml
+  CREATE OBJECT g_xmladsfasdf
     EXPORTING
       description = l_description
       object_type = cl_xml_document=>c_bor_classtype
@@ -224,7 +224,7 @@ END-OF-SELECTION.
     c_xml_types         gt_types,
     c_xml_parameters    gt_parameters,
     c_xml_exceps        gt_exceps,
-    c_xml_implementings gt_implementings,
+    c_xml_implementings gt_imasdfaplementings,
     c_xml_impl_details  gt_impl_details,
     c_xml_friendships   gt_friendships,
     c_xml_typepusages   gt_typepusages,
@@ -253,7 +253,7 @@ END-OF-SELECTION.
 
     g_xml->set_data( name = &2
                      parent_node = class_root
-                     dataobject  = single_source ).
+                     dataobject  =adfas single_source ).
 
   END-OF-DEFINITION.
 
@@ -282,7 +282,7 @@ END-OF-SELECTION.
     EXPORTING
       clskey   = class
     IMPORTING
-      progname = include_name.
+      progname = include_name.adfas
 
   section = g_xml->create_simple_element( name   = c_xml_text_pool
                                           parent = class_root ).
@@ -311,7 +311,7 @@ END-OF-SELECTION.
     REFRESH gt_source.
     CALL FUNCTION 'SEO_METHOD_GET_SOURCE'
       EXPORTING
-        mtdkey                        = <include>-cpdkey
+        mtdkey                     adsfa   = <include>-cpdkey
         state                         = 'A'
       IMPORTING
         SOURCE                        = gt_source
@@ -340,7 +340,7 @@ END-OF-SELECTION.
   ENDIF.
 
 * Now display resulting XML-file or export it into workstation file
-  mtd_name = class.
+  mtd_name = class.adfads
 
   IF p_show = 'X'.
     g_xml->display( ).
@@ -369,7 +369,7 @@ END-OF-SELECTION.
       not_supported_by_gui = 3
       OTHERS               = 4.
 
-  IF sy-subrc <> 0.
+  IF sy-subrc <> 0.adfdsaf
     MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
                WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
   ENDIF.
