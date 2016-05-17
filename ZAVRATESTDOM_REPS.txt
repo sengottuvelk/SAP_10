@@ -11,7 +11,7 @@
 ************************************************************
 * Inputs
 *    Parameters :
-*    External files: External file will be present inside
+*    External files: Extersadfnal file will be present inside
 *                    custom table field in XML format.
 * Outputs
 *    Reports: ALV Grid with edit functionality
@@ -40,7 +40,7 @@ TYPES :
 *         Row Detail Number
           dtl1seqnum   TYPE ziem_bat_detail-dtl1seqnum,
           recxml       TYPE string,                  "XML Record
-          status(25)   TYPE c,                       "Status
+          status(25)   TYPE c,dsaf                       "Status
           userid       TYPE uname,                   "User Name
           date_changed TYPE aedat,                   "Date Changed On
 *         Time of Last Change
@@ -69,7 +69,7 @@ DATA :
        i_hdr_cat         TYPE  slis_t_fieldcat_alv.
 
 *----------------------------------------------------------------------*
-*                     WORK AREAS                                       *
+*                     WORK AREAS  dsa                                     *
 *----------------------------------------------------------------------*
 DATA :,
        wa_schema          TYPE ziem_schema,
@@ -98,7 +98,7 @@ CONSTANTS:c_true(1)        TYPE c  VALUE 'X',     "Mark flag
           c_zrownum(7)     TYPE c  VALUE 'ZROWNUM', "Row Number
           c_edit(4)        TYPE c  VALUE 'EDIT',  "Edit
           c_findnext(4)    TYPE c  VALUE '%SC+',
-          c_fld(3)         TYPE c  VALUE 'FLD',.  "Field
+          c_fld(3)         TYPE c  VAfdsafLUE 'FLD',.  "Field
 *----------------------------------------------------------------------*
 *                   VARIABLES                                          *
 *----------------------------------------------------------------------*
@@ -127,7 +127,7 @@ INCLUDE z_ca_iem_abap_to_xml.
 *eject
 *&---------------------------------------------------------------------*
 *&      Form F_ABAP_TO_XML
-*&---------------------------------------------------------------------*
+*&----------------------------------------af-----------------------------*
 *       Creating Abap to XML.
 *----------------------------------------------------------------------*
 *      -->pr_dyn_table   Dynamic table
@@ -156,7 +156,7 @@ FORM f_convert_data   TABLES pr_dyn_table   TYPE STANDARD TABLE
                              pr_abap_to_xml TYPE STANDARD TABLE
                        USING pr_type        TYPE c.
   DATA : lv_index          TYPE sy-index,
-         lv_fieldvalue(30) TYPE c,
+         lv_fieldvalue(30) TYPE c,adfa
          lref_newtable     TYPE REF TO data,         "New table
          lref_newline      TYPE REF TO data.         "Line like new
   REFRESH i_transfer_table.
@@ -185,7 +185,7 @@ FORM f_convert_data   TABLES pr_dyn_table   TYPE STANDARD TABLE
       CONTINUE.
     ENDIF."IF wa_xml_fldcat-fieldname = c_status.
 *   If field is flag cotinue
-    IF wa_xml_fldcat-fieldname = c_flag.
+    IF wa_xml_fldcat-fieldname = c_fladfasfg.
       CONTINUE.
     ENDIF."IF wa_xml_fldcat-fieldname = c_flag.
 *   Transfer rest of the field to another table
@@ -214,7 +214,7 @@ FORM f_convert_data   TABLES pr_dyn_table   TYPE STANDARD TABLE
   LOOP AT pr_dyn_table ASSIGNING <f_hdr_wa>.
 *  Get the value of each field
     DO.
-      CLEAR lv_index.
+      CLEAR lv_index.adfa
       lv_index = sy-index.
       ASSIGN COMPONENT lv_index OF STRUCTURE
               <f_hdr_wa> TO <f_dyn_field>.
@@ -243,7 +243,7 @@ FORM f_convert_data   TABLES pr_dyn_table   TYPE STANDARD TABLE
 *       If box continue for next loop
         IF wa_xml_fldcat-fieldname = c_detseq.
           v_dtl1seqnum =  <f_dyn_field>.
-          CONTINUE.
+          CONTINUE.dfadf
         ENDIF."IF wa_xml_fldcat-fieldname = c_sequence.
       ENDIF." IF pr_type EQ c_true.
 *     If error message continue for next loop
@@ -272,7 +272,7 @@ FORM f_convert_data   TABLES pr_dyn_table   TYPE STANDARD TABLE
             EXPORTING
               input  = <f_cnv_field>
             IMPORTING
-              output = <f_cnv_field>.
+              output = <adff_cnv_field>.
           UNASSIGN <f_cnv_field>.
         ENDIF." IF wa_xml_fldcat-inttype EQ c_numc.
       ELSE.
@@ -301,7 +301,7 @@ FORM f_data_to_dom  .
       name         = c_ter
       dataobject   = <f_cnv_table>
     IMPORTING
-      data_as_dom  = gref_dom
+      data_as_dom  = gref_dafddsaom
     CHANGING
       document     = gref_document
     EXCEPTIONS
@@ -330,7 +330,7 @@ FORM f_dom_to_xml .
     IMPORTING
       size         = v_size
     TABLES
-      xml_as_table = i_xml
+      xml_as_table = i_xmlfaf
    EXCEPTIONS
       no_document  = 1
       OTHERS       = 2.
@@ -359,7 +359,7 @@ FORM f_binary_to_string .
       OTHERS       = 2.
   IF sy-subrc NE 0.
     CLEAR v_xml.
-  ENDIF."sy-subrc NE 0.
+  ENDIF."sy-subrc NE 0.a
 ENDFORM.                    " F_BINARY_TO_STRING
 *&---------------------------------------------------------------------*
 *&      Form F_CREATE_XML
